@@ -59,11 +59,14 @@ button:disabled {
   display: flex;
   gap: 1rem;
 }
-
 .flex-center {
   justify-content: center;
 }
 
+.btn--theme {
+  background-color: #646cff;
+  color: var(--gray);
+}
 .btn--blue {
   background-color: var(--blue);
   color: var(--gray);
@@ -75,6 +78,13 @@ button:disabled {
 
 .alarm {
   color: var(--color-alarm);
+}
+
+.info-result:has(.positive) {
+  border-left: 2px solid var(--color-positive);
+}
+.info-result:has(.alarm) {
+  border-left: 2px solid var(--color-alarm);
 }
 
 .positive {
@@ -101,6 +111,16 @@ button:disabled {
   background-color: var(--gray);
   text-wrap: nowrap;
   font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.info-money {
+  color: #646cff;
+  border-left: 2px solid #646cff;
+}
+
+.info-expense {
+  color: var(--color-alarm);
+  border-left: 2px solid var(--color-alarm);
 }
 
 .expense-form {
@@ -139,15 +159,11 @@ button:disabled {
 
 .field-money {
   background-color: var(--light-blue);
-  text-align: center;
+  width: min(8.5rem, 100%);
 }
 
 .field-money:focus {
   text-align: left;
-}
-
-.field-money {
-  width: min(10rem, 100%);
 }
 
 .field-description,
@@ -214,7 +230,8 @@ button:disabled {
   .expense-form {
     flex-direction: row;
   }
-  .field-description {
+  .field-description,
+  .field-money {
     width: 55%;
   }
 }

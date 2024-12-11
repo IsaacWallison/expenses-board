@@ -14,14 +14,15 @@ const updateState = () => {
   const totalExpenditure = calculateExpenditure();
   const difference = +userMoney - totalExpenditure;
 
-  money!.value = +userMoney > 0 ? userMoney.toString() : '';
-  infoMoney!.innerText = formatMoney(+userMoney);
+  +userMoney > 0 && (money!.value = userMoney.toString());
+  infoMoney!.innerText = formatMoney(+userMoney || +money!.value);
   infoExpense!.innerText = formatMoney(-totalExpenditure);
   infoResult!.innerText = formatMoney(difference);
 
   infoResult!.classList.remove('alarm', 'positive');
   infoResult!.classList.add(`${difference < 0 ? 'alarm' : 'positive'}`);
 
+  MoneyRepository.updateMoney(+money!.value);
   renderExpenses();
 };
 
